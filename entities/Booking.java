@@ -139,7 +139,7 @@ public class Booking {
 
 
 	public void addServiceCharge(ServiceType serviceType, double cosst) {
-		charges.add(new ServiceCharge(serviceType, cost));
+		charges.add(new ServiceCharge(serviceType, cosst));
 	}
 
 
