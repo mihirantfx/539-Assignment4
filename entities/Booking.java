@@ -120,14 +120,22 @@ public class Booking {
     }
 
     public void checkIn() {
+        state = State.CHECKED_IN;
         room.checkin();
     }
 
     public void addServiceCharge(ServiceType serviceType, double cosst) {
-        charges.add(new ServiceCharge(serviceType, cosst));
+        if (state == State.CHECKED_IN) {
+            charges.add(new ServiceCharge(serviceType, cosst));
+        } else if (state == State.CHECKED_OUT) {
+            System.out.println("User has already checked out!");
+        } else {
+            System.out.println("This is a pending booking!");
+        }
     }
 
     public void checkOut() {
+        state = State.CHECKED_OUT;
         room.checkout(this);
     }
 
